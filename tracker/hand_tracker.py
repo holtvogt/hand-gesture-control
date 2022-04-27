@@ -1,4 +1,4 @@
-from typing import NamedTuple
+from typing import List, NamedTuple
 
 from mediapipe.python.solutions.drawing_styles import get_default_hand_landmarks_style, \
     get_default_hand_connections_style
@@ -16,7 +16,7 @@ class HandTracker(Tracker):
     def __init__(self):
         self._solution = Hands(max_num_hands=1, model_complexity=0, min_detection_confidence=0.7)
 
-    def track(self, image, draw: bool = True) -> ndarray:
+    def track(self, image: ndarray, draw: bool = True) -> ndarray:
         self._results = self._solution.process(image)
 
         # Draw marks on the hand image
@@ -32,8 +32,8 @@ class HandTracker(Tracker):
                     )
         return image
 
-    def get_landmarks(self, image) -> list:
-        landmarks = []
+    def get_landmarks(self, image: ndarray) -> list:
+        landmarks: List[List[int, int, int]] = []
         if self._results.multi_hand_landmarks:
             for hand_landmarks in self._results.multi_hand_landmarks:
                 for (i, landmark) in enumerate(hand_landmarks.landmark):
