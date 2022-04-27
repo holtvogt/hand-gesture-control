@@ -18,3 +18,6 @@ class Manager:
     def stop(self):
         self._capture.release()
         destroyAllWindows()
+
+    def has_camera(self):
+        return self._capture.isOpened()
