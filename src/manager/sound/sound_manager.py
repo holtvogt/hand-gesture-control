@@ -1,20 +1,15 @@
-from cv2 import VideoCapture, destroyAllWindows, waitKey, circle, line, imshow, flip, FILLED
+from cv2 import VideoCapture, waitKey, circle, line, imshow, flip, FILLED
 from mediapipe.python.solutions.hands import HandLandmark
 
 from src.manager.manager import Manager
 from src.model.gesture_mode import GestureMode
 from src.tracker.hand_tracker import HandTracker
-from src.tracker.tracker import Tracker
 
 
 class SoundManager(Manager):
-    _DEFAULT_CAMERA: int = 0
     _CIRCLE_RADIUS: int = 15
     _BLACK: tuple = (0, 0, 0)
     _LINE_THICKNESS: int = 5
-
-    _tracker: Tracker
-    _capture: VideoCapture
 
     def __init__(self):
         self._tracker = HandTracker()
@@ -50,7 +45,3 @@ class SoundManager(Manager):
                 break
 
         self.stop()
-
-    def stop(self):
-        self._capture.release()
-        destroyAllWindows()
