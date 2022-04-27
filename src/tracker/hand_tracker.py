@@ -7,7 +7,7 @@ from mediapipe.python.solutions.hands import Hands
 from mediapipe.python.solutions.hands_connections import HAND_CONNECTIONS
 from numpy import ndarray
 
-from tracker.tracker import Tracker
+from src.tracker.tracker import Tracker
 
 
 class HandTracker(Tracker):

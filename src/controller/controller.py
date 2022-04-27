@@ -1,4 +1,4 @@
-from controller.handler.sound_handler import SoundHandler
+from src.controller.handler.sound_handler import SoundHandler
 
 
 class Controller:
