@@ -1,12 +1,11 @@
 from typing import List, NamedTuple
 
-from mediapipe.python.solutions.drawing_styles import get_default_hand_landmarks_style, \
-    get_default_hand_connections_style
-from mediapipe.python.solutions.drawing_utils import draw_landmarks
+from mediapipe.python.solutions.drawing_utils import draw_landmarks, DrawingSpec
 from mediapipe.python.solutions.hands import Hands
 from mediapipe.python.solutions.hands_connections import HAND_CONNECTIONS
 from numpy import ndarray
 
+from src.model.color import Color
 from src.tracker.tracker import Tracker
 
 
@@ -14,7 +13,8 @@ class HandTracker(Tracker):
     _results: NamedTuple
 
     def __init__(self):
-        self._solution = Hands(max_num_hands=1, model_complexity=0, min_detection_confidence=0.7)
+        self._solution = Hands(max_num_hands=1, model_complexity=0, min_detection_confidence=0.8,
+                               min_tracking_confidence=0.6)
 
     def track(self, image: ndarray, draw: bool = True) -> ndarray:
         self._results = self._solution.process(image)
@@ -27,8 +27,7 @@ class HandTracker(Tracker):
                         image,
                         hand_landmarks,
                         HAND_CONNECTIONS,
-                        get_default_hand_landmarks_style(),
-                        get_default_hand_connections_style()
+                        landmark_drawing_spec=DrawingSpec(color=Color.RED.color)
                     )
         return image
 
