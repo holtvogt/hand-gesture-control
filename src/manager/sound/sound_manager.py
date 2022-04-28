@@ -41,7 +41,7 @@ class SoundManager(Manager):
             # Mirror selfie video
             imshow(GestureMode.SOUND.mode_name, flip(image, 1))
 
-            if waitKey(10) & 0xFF == 27:
+            if self._exit_was_pressed():
                 break
 
         self.stop()
