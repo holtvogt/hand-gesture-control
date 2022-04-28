@@ -7,8 +7,8 @@ class SoundHandler(BaseHandler):
 
     def run(self):
         sound_manager: Manager = SoundManager()
-        if not sound_manager.has_camera():
-            print("No camera device was found. Turning off the sound manager..")
+        if not sound_manager.video_capturing_enabled():
+            print("Video capturing not enabled. Turning off the sound manager..")
             sound_manager.stop()
         else:
             sound_manager.start()
