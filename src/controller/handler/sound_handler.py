@@ -4,6 +4,7 @@ from src.manager.sound.sound_manager import SoundManager
 
 
 class SoundHandler(BaseHandler):
+    """A sound handler used to handle the sound with a sound manager."""
 
     def run(self):
         sound_manager: Manager = SoundManager()

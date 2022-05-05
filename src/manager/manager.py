@@ -7,6 +7,8 @@ from src.tracker.tracker import Tracker
 
 
 class Manager:
+    """A base manager class providing methods to use a tracker within a video capturing output."""
+
     _DEFAULT_CAMERA: int = 0
     _EXIT_BUTTON: int = Button.ESCAPE.value
     _MINIMUM_WAIT: int = 10

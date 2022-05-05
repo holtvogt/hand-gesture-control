@@ -5,6 +5,8 @@ from numpy import ndarray
 
 
 class Tracker(ABC):
+    """Abstract tracker used to track and landmark different shapes, poses or objects in general."""
+
     _solution: SolutionBase
 
     @abstractmethod

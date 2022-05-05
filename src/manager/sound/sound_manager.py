@@ -12,12 +12,16 @@ from src.tracker.hand_tracker import HandTracker
 
 
 class SoundManager(Manager):
+    """The sound manager class used to control the sound of a device using a tracker as motion control."""
+
     _CIRCLE_RADIUS: int = 10
     _LINE_THICKNESS: int = 3
     _MIN_DISTANCE: int = 30
     _MAX_DISTANCE: int = 300
 
     def __init__(self):
+        """Initializes the sound manager."""
+
         self._tracker = HandTracker()
         self._capture = VideoCapture(self._DEFAULT_CAMERA)
 

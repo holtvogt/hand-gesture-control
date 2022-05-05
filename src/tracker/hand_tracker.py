@@ -10,9 +10,13 @@ from src.tracker.tracker import Tracker
 
 
 class HandTracker(Tracker):
+    """A tracker class used for hand tracking."""
+
     _results: NamedTuple
 
     def __init__(self):
+        """Initializes the tracker class."""
+
         self._solution = Hands(max_num_hands=1, model_complexity=0, min_detection_confidence=0.8,
                                min_tracking_confidence=0.6)
 
